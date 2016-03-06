@@ -1,0 +1,22 @@
+.roundabout button {
+	margin: 8px;
+	padding: 0;
+	width: 62px;
+	height: 62px;
+	border: 1px solid black;
+	border-radius: 44px;
+	line-height: 62px;
+	font-size: 50px;
+	background: orange;
+	cursor: pointer;
+}
+
+.roundabout button:hover {
+	background: lightgreen;
+}
+
+.roundabout p {
+	font-family: "Comic Sans MS", sans-serif;
+	font-size: 35px;
+	color: orange;
+}

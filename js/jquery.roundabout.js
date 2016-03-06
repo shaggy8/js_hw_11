@@ -43,21 +43,6 @@
 				'overflow': 'hidden',
 		});
 
-		$elems.button.left.click(function() {
-			if ($elems.list.css('left') == '0px') return;
-			var rightMove = parseFloat($elems.list.css('left')) + $elems.box.width() + settings.imgMargin;
-			$elems.list.animate({
-				'left': rightMove
-			}, 'slow')
-		});;
-
-		$elems.button.right.click(function() {
-			var leftMove = parseFloat($elems.list.css('left')) - $elems.box.width() - settings.imgMargin;
-			$elems.list.animate({
-				'left': leftMove
-			}, 'slow')
-		});
-
 		$mainBox.css({
 				'position': 'relative',
 				'padding-left': $elems.button.left.outerWidth(true),
@@ -66,7 +51,41 @@
 			});
 
 
+		$elems.button.left.click(function() {
+
+			var left = parseFloat($elems.list.css('left'));
+			var move = left + $elems.box.width() + settings.imgMargin;
+			var end = - (settings.imgMargin + settings.imgWidth) * ($elems.imgs.length - settings.boxSize);
+			if (left > - $elems.box.width()) {
+				move = 0;
+			}
+			if (left === 0) {
+				move = end;
+			}
+			$elems.list.animate({
+				'left': move,
+			}, 'slow')
+		});;
+
+		$elems.button.right.click(function() {
+
+			var left = parseFloat($elems.list.css('left'));
+			var move = left - $elems.box.width() - settings.imgMargin;
+			var end = - (settings.imgMargin + settings.imgWidth) * ($elems.imgs.length - settings.boxSize);
+			if (left < end + $elems.box.width()) {
+				move = end;
+			}
+			if (left === end) {
+				move = 0;
+			}
+			$elems.list.animate({
+				'left': move,
+			}, 'slow')
+		});
+
+
 		$elems.imgs.load(function() {
+
 			$elems.button.left
 				.css({
 					'position': 'absolute',
